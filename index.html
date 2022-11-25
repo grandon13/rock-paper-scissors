@@ -9,13 +9,19 @@
 
         <script>
             /*The computer gets a random, equally probable choice: Rock, Paper or Scissors, and returns a string with it*/
-            function getComputerChoice () {
+            function getComputerChoice() {
                 let randomNum = 0;
                 while (randomNum === 0) {
                     randomNum = Math.floor(Math.random() * 100);
                 }
 
                 return randomNum < 34 ? "Rock" : randomNum < 67 ? "Paper" : "Scissors"; 
+            }
+
+            /*This function formats the input of the player*/
+            function format(playerInput) {
+                let correctFormat = playerInput.charAt(0).toUpperCase() + playerInput.slice(1).toLowerCase();
+                return correctFormat;
             }
 
         </script>
