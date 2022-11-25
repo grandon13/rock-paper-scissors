@@ -6,7 +6,6 @@
     </head>
 
     <body>
-
         <script>
             /*The computer gets a random, equally probable choice: Rock, Paper or Scissors, and returns a string with it*/
             function getComputerChoice() {
@@ -58,7 +57,40 @@
                 }
             }
 
-        </script>
+            //Creates a game consisting of various rounds
+            function game() {
+                let playerScore = 0;
+                let computerScore = 0;
 
+                //Creates a game of 5 rounds
+                for (let i = 0; i < 5; i++) {                    
+                    let computerSelection = getComputerChoice();
+
+                    //Receives input from the player and makes sure it's a valid choice
+                    let playerSelection = format(prompt("Make a choice for Round " + (i+1)));
+                    while (playerSelection != "Rock" && playerSelection != "Paper" && playerSelection != "Scissors") {
+                        playerSelection = format(prompt("Invalid choice. Make a choice for Round " +(i+1)));                        
+                    }
+                    
+                    //Get's result of the round and diplays it in the console
+                    let roundResult = playRound(playerSelection, computerSelection);
+                    console.log("Round " + (i+1) + ": " + roundResult);
+
+                    //Updates the scores of both player and computer
+                    if (roundResult.charAt(4) === "w"){
+                        playerScore++;
+                    }
+                    else if (roundResult.charAt(4) === "l") {
+                        computerScore++;
+                    }                    
+                }
+
+                //Prints the final result in the console
+                console.log(playerScore + " - " + computerScore);
+                console.log((playerScore > computerScore) ? "You win the game!" : (computerScore > playerScore) ? "You lose the game!" : "It's a draw!"); 
+            }
+
+            game();
+        </script>
     </body>
 </html>
