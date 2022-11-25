@@ -24,6 +24,40 @@
                 return correctFormat;
             }
 
+             /*Creates a single game of Rock, Paper, Scissors*/
+             function playRound(playerSelection, computerSelection) {
+                let player = format(playerSelection);
+                
+                //Case of a draw
+                if (player === computerSelection) {
+                    return `It's a draw! ${player} ties with ${computerSelection}`;
+                }
+
+                //Case of player choosing Rock
+                else if (player === "Rock") {
+                    if (computerSelection === "Scissors") {
+                        return `You win! ${player} beats ${computerSelection}`;
+                    }
+                    else return `You lose! ${computerSelection} beats ${player}`;
+                }
+
+                //Case of player choosing Paper
+                else if (player === "Paper") {
+                    if (computerSelection === "Rock") {
+                        return `You win! ${player} beats ${computerSelection}`;
+                    }
+                    else return `You lose! ${computerSelection} beats ${player}`;
+                }
+
+                //Case of player choosing Scissors
+                else {
+                    if (computerSelection === "Paper") {
+                        return `You win! ${player} beats ${computerSelection}`;
+                    }
+                    else return `You lose! ${computerSelection} beats ${player}`;
+                }
+            }
+
         </script>
 
     </body>
