@@ -3,94 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
+        <script src="./script.js" defer></script>
     </head>
 
     <body>
-        <script>
-            /*The computer gets a random, equally probable choice: Rock, Paper or Scissors, and returns a string with it*/
-            function getComputerChoice() {
-                let randomNum = 0;
-                while (randomNum === 0) {
-                    randomNum = Math.floor(Math.random() * 100);
-                }
+        <div class="score">
+            <h2>SCORE</h2>
+            <div class="player">Player:     </div>  
+            <div class="computer">Computer: </div>
+            <div>------------------</div>
+            <div class="screen"></div>
+        </div>
 
-                return randomNum < 34 ? "Rock" : randomNum < 67 ? "Paper" : "Scissors"; 
-            }
-
-            /*This function formats the input of the player*/
-            function format(playerInput) {
-                let correctFormat = playerInput.charAt(0).toUpperCase() + playerInput.slice(1).toLowerCase();
-                return correctFormat;
-            }
-
-             /*Creates a single game of Rock, Paper, Scissors*/
-             function playRound(playerSelection, computerSelection) {
-                let player = format(playerSelection);
-                
-                //Case of a draw
-                if (player === computerSelection) {
-                    return `It's a draw! ${player} ties with ${computerSelection}`;
-                }
-
-                //Case of player choosing Rock
-                else if (player === "Rock") {
-                    if (computerSelection === "Scissors") {
-                        return `You win! ${player} beats ${computerSelection}`;
-                    }
-                    else return `You lose! ${computerSelection} beats ${player}`;
-                }
-
-                //Case of player choosing Paper
-                else if (player === "Paper") {
-                    if (computerSelection === "Rock") {
-                        return `You win! ${player} beats ${computerSelection}`;
-                    }
-                    else return `You lose! ${computerSelection} beats ${player}`;
-                }
-
-                //Case of player choosing Scissors
-                else {
-                    if (computerSelection === "Paper") {
-                        return `You win! ${player} beats ${computerSelection}`;
-                    }
-                    else return `You lose! ${computerSelection} beats ${player}`;
-                }
-            }
-
-            //Creates a game consisting of various rounds
-            function game() {
-                let playerScore = 0;
-                let computerScore = 0;
-
-                //Creates a game of 5 rounds
-                for (let i = 0; i < 5; i++) {                    
-                    let computerSelection = getComputerChoice();
-
-                    //Receives input from the player and makes sure it's a valid choice
-                    let playerSelection = format(prompt("Make a choice for Round " + (i+1)));
-                    while (playerSelection != "Rock" && playerSelection != "Paper" && playerSelection != "Scissors") {
-                        playerSelection = format(prompt("Invalid choice. Make a choice for Round " +(i+1)));                        
-                    }
-                    
-                    //Get's result of the round and diplays it in the console
-                    let roundResult = playRound(playerSelection, computerSelection);
-                    console.log("Round " + (i+1) + ": " + roundResult);
-
-                    //Updates the scores of both player and computer
-                    if (roundResult.charAt(4) === "w"){
-                        playerScore++;
-                    }
-                    else if (roundResult.charAt(4) === "l") {
-                        computerScore++;
-                    }                    
-                }
-
-                //Prints the final result in the console
-                console.log(playerScore + " - " + computerScore);
-                console.log((playerScore > computerScore) ? "You win the game!" : (computerScore > playerScore) ? "You lose the game!" : "It's a draw!"); 
-            }
-
-            game();
-        </script>
+        <div class="container">
+            <button id="Rock">Rock</button>
+            <button id="Paper">Paper</button>
+            <button id="Scissors">Scissors</button>
+        </div>
     </body>
 </html>
